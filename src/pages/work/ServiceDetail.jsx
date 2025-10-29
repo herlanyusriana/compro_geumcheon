@@ -1,16 +1,16 @@
-﻿import { useMemo } from "react"
+import { useMemo } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import { ArrowLeft } from "lucide-react"
 import { useLanguage } from "../../context/LanguageContext"
-import laserCutting1 from "../../assets/img/Laser-Cutting-2-DSCN1100.jpg"
-import laserCutting2 from "../../assets/img/Laser-Cutting-3-DSCN1108-upload.jpg"
-import laserCutting3 from "../../assets/img/slide1.jpg"
+import laserCutting1 from "../../assets/img/laser-cutting-2.jpg"
+import laserCutting2 from "../../assets/img/laser-cutting-3.jpg"
+import laserCutting3 from "../../assets/web/gerbang-gci-view-from-drone.png"
 import metalPress1 from "../../assets/img/bending-machine-1.jpg"
-import metalPress2 from "../../assets/img/DSC05958.jpg"
-import metalPress3 from "../../assets/img/DSC05959.jpg"
-import workshop1 from "../../assets/img/DSC05961.jpg"
-import workshop2 from "../../assets/img/DSC05963.jpg"
-import workshop3 from "../../assets/img/about-21.jpg"
+import metalPress2 from "../../assets/web/Project/holcim1.jpg"
+import metalPress3 from "../../assets/web/Project/holcim2.jpg"
+import workshop1 from "../../assets/web/Project/holcim3.jpg"
+import workshop2 from "../../assets/web/Project/kcc-project1.jpg"
+import workshop3 from "../../assets/web/Project/kcc-project2.jpg"
 
 const fallbackImage =
   'data:image/svg+xml;charset=UTF-8,' +
@@ -69,21 +69,21 @@ const services = {
         ],
       },
       ko: {
-        title: "레이저 커팅 센터",
-        subtitle: "6kW 파이버 장비와 자동 로딩 시스템",
+        title: "??? ?? ??",
+        subtitle: "6kW ??? ??? ?? ?? ???",
         description:
-          "금천 인도의 레이저 커팅 서비스는 자동차, 전자, 건설 산업을 위한 정밀 부품을 생산합니다. 6kW 파이버 장비와 듀얼 테이블로 소재 교체 시간을 최소화합니다.",
+          "?? ??? ??? ?? ???? ???, ??, ?? ??? ?? ?? ??? ?????. 6kW ??? ??? ?? ???? ?? ?? ??? ??????.",
         highlights: [
-          "컷 품질 유지를 위한 자동 노즐 세척과 교정",
-          "생산 추적을 위한 자재 바코드 트래킹",
-          "짧은 리드타임을 위한 온사이트 표준 자재 재고",
+          "? ?? ??? ?? ?? ?? ??? ??",
+          "?? ??? ?? ?? ??? ???",
+          "?? ????? ?? ???? ?? ?? ??",
         ],
         specs: [
-          { label: "판재 크기", value: "3000 x 1500 mm" },
-          { label: "최대 두께", value: "연강 20 mm | 스테인리스 12 mm | 알루미늄 10 mm" },
-          { label: "정밀도", value: "+/- 0.05 mm" },
-          { label: "출력", value: "교대당 최대 500장" },
-          { label: "소프트웨어", value: "자동 네스팅 및 MES 연동" },
+          { label: "?? ??", value: "3000 x 1500 mm" },
+          { label: "?? ??", value: "?? 20 mm | ????? 12 mm | ???? 10 mm" },
+          { label: "???", value: "+/- 0.05 mm" },
+          { label: "??", value: "??? ?? 500?" },
+          { label: "?????", value: "?? ??? ? MES ??" },
         ],
       },
     },
@@ -128,21 +128,21 @@ const services = {
         ],
       },
       ko: {
-        title: "금속 프레스 설비",
-        subtitle: "200~450톤 프레스 라인과 퀵 다이 체인지",
+        title: "?? ??? ??",
+        subtitle: "200~450? ??? ??? ? ?? ???",
         description:
-          "금속 프레스 설비는 자동차 및 산업 부품의 대량 생산을 지원합니다. 퀵 다이 체인지와 디지털 모니터링으로 매 스트로크의 품질을 유지합니다.",
+          "?? ??? ??? ??? ? ?? ??? ?? ??? ?????. ? ?? ???? ??? ?????? ? ????? ??? ?????.",
         highlights: [
-          "퀵 다이 체인지 시스템으로 세팅 시간을 단축하고 다운타임을 줄입니다",
-          "디지털 게이지를 통한 인라인 치수 검사",
-          "코일 피더 시스템으로 롤 소재를 효율적으로 공급",
+          "? ?? ??? ????? ?? ??? ???? ????? ????",
+          "??? ???? ?? ??? ?? ??",
+          "?? ?? ????? ? ??? ????? ??",
         ],
         specs: [
-          { label: "톤 범위", value: "200 - 450 ton" },
-          { label: "분당 스트로크", value: "40 - 60 spm" },
-          { label: "베드 크기", value: "2500 x 1200 mm" },
-          { label: "컨트롤러", value: "부하 모니터 센서를 갖춘 PLC" },
-          { label: "생산 능력", value: "월 최대 120,000개" },
+          { label: "? ??", value: "200 - 450 ton" },
+          { label: "?? ????", value: "40 - 60 spm" },
+          { label: "?? ??", value: "2500 x 1200 mm" },
+          { label: "????", value: "?? ??? ??? ?? PLC" },
+          { label: "?? ??", value: "? ?? 120,000?" },
         ],
       },
     },
@@ -187,21 +187,21 @@ const services = {
         ],
       },
       ko: {
-        title: "정밀 워크숍",
-        subtitle: "24시간 가공, 용접, 조립",
+        title: "?? ???",
+        subtitle: "24?? ??, ??, ??",
         description:
-          "금천 인도의 정밀 워크숍은 지그와 픽스처 제작, CNC 가공, 용접, 피니싱을 지원하며, 엔지니어링 팀이 맞춤 요청과 입주사 공구 유지보수를 담당합니다.",
+          "?? ??? ?? ???? ??? ??? ??, CNC ??, ??, ???? ????, ????? ?? ?? ??? ??? ?? ????? ?????.",
         highlights: [
-          "입주사 생산 라인을 위한 맞춤 지그·픽스처 제작",
-          "내부 부품 지원으로 신속한 공구 수리",
-          "모든 작업을 디지털로 기록해 유지보수 이력을 관리",
+          "??? ?? ??? ?? ?? ??�??? ??",
+          "?? ?? ???? ??? ?? ??",
+          "?? ??? ???? ??? ???? ??? ??",
         ],
         specs: [
-          { label: "CNC 설비", value: "5축 버티컬 머시닝센터, CNC 선반" },
-          { label: "용접 설비", value: "MIG, TIG, 로봇 용접 셀" },
-          { label: "면적", value: "10톤 크레인을 갖춘 2,500 m2" },
-          { label: "품질 실험실", value: "CMM, 표면 거칠기 측정기, 경도 시험기" },
-          { label: "지원", value: "24시간 엔지니어링 및 온사이트 서비스" },
+          { label: "CNC ??", value: "5? ??? ?????, CNC ??" },
+          { label: "?? ??", value: "MIG, TIG, ?? ?? ?" },
+          { label: "??", value: "10? ???? ?? 2,500 m2" },
+          { label: "?? ???", value: "CMM, ?? ??? ???, ?? ???" },
+          { label: "??", value: "24?? ????? ? ???? ???" },
         ],
       },
     },
@@ -220,9 +220,9 @@ const sectionLabels = {
     specs: "Machine Specifications",
   },
   ko: {
-    back: "뒤로",
-    highlights: "운영 하이라이트",
-    specs: "설비 사양",
+    back: "??",
+    highlights: "?? ?????",
+    specs: "?? ??",
   },
 }
 
@@ -328,3 +328,4 @@ export function ServiceDetail() {
     </div>
   )
 }
+

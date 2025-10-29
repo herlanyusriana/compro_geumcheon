@@ -1,6 +1,9 @@
-import { MessageCircle } from 'lucide-react'
+import { MessageCircle } from "lucide-react"
+import { createWhatsAppLink } from "../utils/whatsapp"
 
-const whatsappLink = 'https://wa.me/6281210868681?text=Halo%20Geumcheon%20Indo%2C%20saya%20ingin%20mendiskusikan%20peluang%20investasi.'
+const whatsappLink = createWhatsAppLink(
+  "Halo Geumcheon Indo, saya ingin mendiskusikan peluang investasi."
+)
 
 export function WhatsAppButton() {
   return (

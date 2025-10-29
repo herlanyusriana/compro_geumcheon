@@ -7,6 +7,7 @@ import { Home } from './pages/Home'
 import { Work } from './pages/Work'
 import { Partners } from './pages/Partners'
 import { Contact } from './pages/Contact'
+import { ProjectQuote } from './pages/ProjectQuote'
 import { ServiceDetail } from './pages/work/ServiceDetail'
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
             <Route path="/work" element={<Work />} />
             <Route path="/work/:slug" element={<ServiceDetail />} />
             <Route path="/partners" element={<Partners />} />
+            <Route path="/project" element={<ProjectQuote />} />
             <Route path="/contact" element={<Contact />} />
           </Routes>
         </main>

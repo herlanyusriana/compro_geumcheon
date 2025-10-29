@@ -98,27 +98,49 @@ export function AboutSection() {
   const content = aboutContent[language] ?? aboutContent.id
 
   return (
-    <section className="bg-white">
-      <div className="container grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
-        <div className="space-y-6">
-          <span className="text-xs font-semibold uppercase tracking-[0.4em] text-muted-grey">{content.badge}</span>
-          <h2 className="text-3xl font-semibold leading-tight text-theme-blue sm:text-4xl">{content.title}</h2>
-          {content.paragraphs.map((paragraph) => (
-            <p key={paragraph.slice(0, 20)} className="text-base leading-relaxed text-muted-grey">
-              {paragraph}
-            </p>
-          ))}
+    <section id="about" className="relative overflow-hidden bg-white py-24 text-theme-blue md:py-28 animate-fade-in">
+      <div className="absolute inset-0 bg-gradient-to-br from-light-theme-purple/50 via-white to-white" aria-hidden />
+      <div className="absolute left-1/2 top-0 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-theme-purple/15 blur-3xl" aria-hidden />
+
+      <div className="container relative z-10 grid gap-16 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
+        <div className="space-y-10 lg:pr-12">
+          <div className="inline-flex items-center gap-2 rounded-full border border-theme-purple/20 bg-light-theme-purple/60 px-5 py-2 text-[0.68rem] font-semibold uppercase tracking-[0.4em] text-theme-purple">
+            <span className="h-1.5 w-1.5 rounded-full bg-theme-purple" />
+            <span>{content.badge}</span>
+          </div>
+          <div className="space-y-6">
+            <h2 className="text-3xl font-semibold leading-tight tracking-tight text-theme-blue sm:text-4xl lg:text-5xl">
+              {content.title}
+            </h2>
+            <div className="space-y-5 text-base leading-relaxed text-muted-grey">
+              {content.paragraphs.map((paragraph) => (
+                <p key={paragraph.slice(0, 20)}>{paragraph}</p>
+              ))}
+            </div>
+          </div>
+          <div className="relative overflow-hidden rounded-[30px] border border-theme-purple/20 bg-white/80 p-8 shadow-[0_30px_80px_-40px_rgba(15,23,42,0.18)] backdrop-blur">
+            <div className="absolute -top-24 -right-16 h-52 w-52 rounded-full bg-light-theme-purple blur-3xl" aria-hidden />
+            <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-white to-transparent" aria-hidden />
+            <p className="relative text-base font-medium leading-relaxed text-theme-blue">{content.highlight}</p>
+          </div>
         </div>
 
-        <div className="grid gap-5 rounded-[32px] border border-slate-200 bg-background p-6 shadow-card">
-          {content.differentiators.map((item) => (
-            <div key={item.title} className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-              <p className="text-xs uppercase tracking-[0.4em] text-theme-purple">{item.metric}</p>
-              <p className="mt-3 text-lg font-semibold text-theme-blue">{item.title}</p>
-              <p className="mt-2 text-sm leading-relaxed text-muted-grey">{item.description}</p>
-            </div>
-          ))}
-          <div className="rounded-2xl bg-light-theme-purple/60 p-6 text-sm leading-relaxed text-theme-blue">{content.highlight}</div>
+        <div className="relative">
+          <div className="absolute inset-x-8 -top-16 h-32 rounded-full bg-light-theme-purple blur-3xl" aria-hidden />
+          <div className="relative flex flex-col gap-6 rounded-[36px] border border-slate-200 bg-white p-6 shadow-[0_45px_90px_-60px_rgba(15,23,42,0.18)]">
+            {content.differentiators.map((item, index) => (
+              <div
+                key={item.title}
+                className="group relative overflow-hidden rounded-3xl border border-theme-purple/15 bg-gradient-to-br from-white via-white/80 to-light-theme-purple/40 p-6 shadow-[0_30px_80px_-50px_rgba(15,23,42,0.15)] transition-transform duration-300 animate-fade-up hover:-translate-y-1 hover:border-theme-purple/40"
+                style={{ animationDelay: `${index * 0.12}s` }}
+              >
+                <div className="absolute -right-14 top-1/2 h-36 w-36 -translate-y-1/2 rounded-full bg-light-theme-purple blur-3xl opacity-0 transition-opacity duration-300 group-hover:opacity-100" aria-hidden />
+                <p className="text-[0.65rem] uppercase tracking-[0.35em] text-theme-purple">{item.metric}</p>
+                <p className="mt-4 text-xl font-semibold text-theme-blue">{item.title}</p>
+                <p className="mt-3 text-sm leading-relaxed text-muted-grey">{item.description}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

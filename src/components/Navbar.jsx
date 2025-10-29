@@ -1,4 +1,4 @@
-﻿import { useState } from "react"
+import { useState } from "react"
 import { Link, NavLink } from "react-router-dom"
 import { Menu, X } from "lucide-react"
 import logoBig from "../assets/logo/logo-big.jpg"
@@ -19,6 +19,7 @@ const navLabels = {
     partners: "Mitra Kami",
     contact: "Kontak",
     contactCta: "Hubungi Kami",
+    projectCta: "Mulai Proyek",
     mobileCta: "Konsultasi Gratis",
   },
   en: {
@@ -27,15 +28,17 @@ const navLabels = {
     partners: "Our Partner",
     contact: "Contact",
     contactCta: "Contact Us",
+    projectCta: "Start Your Project",
     mobileCta: "Request Consultation",
   },
   ko: {
-    home: "홈",
-    work: "주요 공정",
-    partners: "주요 파트너",
-    contact: "문의",
-    contactCta: "문의하기",
-    mobileCta: "상담 요청",
+    home: "?",
+    work: "?? ??",
+    partners: "?? ???",
+    contact: "??",
+    contactCta: "????",
+    projectCta: "Start Your Project",
+    mobileCta: "?? ??",
   },
 }
 
@@ -71,6 +74,12 @@ export function Navbar() {
 
         <div className="flex items-center gap-3">
           <LanguageSwitcher className="hidden md:block" />
+          <Link
+            to="/project"
+            className="hidden rounded-full border border-theme-purple/25 px-5 py-2 text-sm font-medium text-theme-purple transition hover:border-theme-purple hover:bg-light-theme-purple/60 md:inline-flex"
+          >
+            {labels.projectCta}
+          </Link>
           <Link
             to="/contact"
             className="hidden rounded-full bg-theme-purple px-5 py-2 text-sm font-medium text-white shadow-soft transition hover:bg-theme-purple/90 md:inline-flex"
@@ -115,12 +124,21 @@ export function Navbar() {
             >
               {labels.mobileCta}
             </Link>
+            <Link
+              to="/project"
+              onClick={() => setOpen(false)}
+              className="rounded-full border border-theme-purple/30 px-4 py-3 text-center text-theme-purple"
+            >
+              {labels.projectCta}
+            </Link>
           </nav>
         </div>
       )}
     </header>
   )
 }
+
+
 
 
 

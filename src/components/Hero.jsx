@@ -1,27 +1,53 @@
-﻿import { ArrowUpRight, Play, ShieldCheck, Sparkles } from "lucide-react"
+import { ArrowUpRight, Factory, Scissors, Sparkles, Wrench } from "lucide-react"
 import { Link } from "react-router-dom"
 import { useLanguage } from "../context/LanguageContext"
+import { createWhatsAppLink } from "../utils/whatsapp"
+
+const highlightIcons = {
+  laser: Scissors,
+  fabrication: Factory,
+  finishing: Wrench,
+  spark: Sparkles,
+}
 
 const heroContent = {
   id: {
-    badge: "Manufaktur Logam",
-    title: "Solusi manufaktur logam presisi dan pengelolaan kawasan terpadu",
+    badge: "PT. Geum Cheon Indo",
+    headline: {
+      leading: "Menyederhanakan",
+      highlight: "manufaktur logam presisi",
+      trailing: "untuk ekspansi industri Anda",
+    },
     description:
-      "Geum Cheon Indo memimpin industri manufaktur logam melalui fasilitas laser cutting, metal press, dan workshop presisi. Kami mengintegrasikan pengembangan kawasan industri dengan layanan fabrikasi in-house untuk mempercepat produksi mitra global Anda.",
-    primaryCta: "Konsultasi Manufaktur",
-    secondaryCta: "Jelajahi Kapabilitas",
-    quality: "Sistem mutu terpadu dengan inspeksi QA harian, traceability, dan command center produksi.",
-    campusLabel: "Metalworks Campus",
-    campusTitle: "Geum Cheon Indo Hub - Cikupa",
-    campusBadge: "Operasi 24/7",
-    modules: [
+      "Kampus produksi Geum Cheon Indo menggabungkan laser cutting, fabrikasi baja, dan QC digital agar setiap batch dikirim tepat waktu dengan toleransi presisi.",
+    primaryCta: "Mulai Proyek",
+    primaryHref: "/project",
+    primaryType: "route",
+    secondaryCta: "Telusuri Layanan",
+    secondaryHref: "#services",
+    secondaryType: "anchor",
+    trustedHeading: "Dipercaya oleh manufaktur di",
+    trusted: ["Semikonduktor", "Elektronik", "Otomotif", "Infrastruktur"],
+    highlights: [
       {
-        label: "Laser Cutting",
-        description: "Mesin fiber 6kW dengan tabel otomatis untuk material baja, stainless, dan aluminium.",
+        key: "laser",
+        title: "Laser cutting fiber 6 kW",
+        description: "Auto loading dengan toleransi +/-0,1 mm untuk stainless, mild steel, dan aluminium.",
       },
       {
-        label: "Metal Press",
-        description: "Kapasitas 450 ton dengan quick die change dan integrasi QC digital.",
+        key: "fabrication",
+        title: "Fabrikasi & welding presisi",
+        description: "Tim MIG/TIG bersertifikasi WPS/PQR lengkap dengan jig presisi dan inspeksi visual.",
+      },
+      {
+        key: "finishing",
+        title: "Finishing terpadu siap kirim",
+        description: "Bending, coating, dan assembly terintegrasi dengan laporan kualitas digital.",
+      },
+      {
+        key: "spark",
+        title: "Monitoring produksi realtime",
+        description: "Dashboard OEE dan traceability digital memastikan transparansi penuh.",
       },
     ],
     metrics: [
@@ -31,24 +57,42 @@ const heroContent = {
     ],
   },
   en: {
-    badge: "Metal Manufacturing",
-    title: "Precision metal manufacturing with an integrated industrial campus",
+    badge: "PT. Geum Cheon Indo",
+    headline: {
+      leading: "Simplifying",
+      highlight: "precision metal fabrication",
+      trailing: "for your next build",
+    },
     description:
-      "Geum Cheon Indo leads metal manufacturing with fiber laser cutting, metal press, and precision workshop facilities. We connect industrial estate development with in-house fabrication to accelerate production for global partners.",
-    primaryCta: "Manufacturing Consultation",
-    secondaryCta: "Explore Capabilities",
-    quality: "Integrated quality system with daily QA inspections, traceability, and a production command center.",
-    campusLabel: "Metalworks Campus",
-    campusTitle: "Geum Cheon Indo Hub - Cikupa",
-    campusBadge: "24/7 Operation",
-    modules: [
+      "Geum Cheon Indo merges laser cutting, steel fabrication, and digital QC so every batch ships on schedule with tight tolerances.",
+    primaryCta: "Start Your Project",
+    primaryHref: "/project",
+    primaryType: "route",
+    secondaryCta: "Explore Services",
+    secondaryHref: "#services",
+    secondaryType: "anchor",
+    trustedHeading: "Trusted by manufacturers in",
+    trusted: ["Semiconductor", "Electronics", "Automotive", "Infrastructure"],
+    highlights: [
       {
-        label: "Laser Cutting",
-        description: "6kW fiber machines with auto table exchange for steel, stainless, and aluminium.",
+        key: "laser",
+        title: "6 kW fiber laser cutting",
+        description: "Automated loading with +/-0.1 mm tolerance for stainless, mild steel, and aluminium.",
       },
       {
-        label: "Metal Press",
-        description: "450-ton capacity with quick die change and digital QC integration.",
+        key: "fabrication",
+        title: "Precision fabrication & welding",
+        description: "Certified MIG/TIG teams with validated WPS/PQR, precision jigs, and structured inspection.",
+      },
+      {
+        key: "finishing",
+        title: "Integrated finishing ready to ship",
+        description: "Bending, coating, and assembly with digital quality reports.",
+      },
+      {
+        key: "spark",
+        title: "Realtime production monitoring",
+        description: "OEE dashboards and end-to-end traceability keep every run transparent.",
       },
     ],
     metrics: [
@@ -58,131 +102,185 @@ const heroContent = {
     ],
   },
   ko: {
-    badge: "금속 제조",
-    title: "정밀 금속 제조와 통합 산업 단지 솔루션",
+    badge: "PT. Geum Cheon Indo",
+    headline: {
+      leading: "Simplifying",
+      highlight: "precision metal fabrication",
+      trailing: "for your next build",
+    },
     description:
-      "금천 인도는 파이버 레이저 절단, 금속 프레스, 정밀 워크숍 시설을 통해 금속 제조를 선도합니다. 산업 단지 개발과 사내 제작 서비스를 통합해 글로벌 파트너의 생산을 빠르게 지원합니다.",
-    primaryCta: "제조 상담",
-    secondaryCta: "역량 살펴보기",
-    quality: "일일 QA 검사와 추적 시스템, 생산 지휘 센터를 포함한 통합 품질 체계.",
-    campusLabel: "Metalworks Campus",
-    campusTitle: "Geum Cheon Indo Hub - Cikupa",
-    campusBadge: "24시간 가동",
-    modules: [
+      "Geum Cheon Indo integrates laser cutting, fabrication, and digital QC so every component meets schedule and tolerance expectations.",
+    primaryCta: "Start Your Project",
+    primaryHref: "/project",
+    primaryType: "route",
+    secondaryCta: "Explore Services",
+    secondaryHref: "#services",
+    secondaryType: "anchor",
+    trustedHeading: "Trusted by manufacturers in",
+    trusted: ["Semiconductor", "Electronics", "Automotive", "Infrastructure"],
+    highlights: [
       {
-        label: "레이저 커팅",
-        description: "6kW 파이버 장비와 자동 테이블로 강재, 스테인리스, 알루미늄을 가공합니다.",
+        key: "laser",
+        title: "6 kW fiber laser cutting",
+        description: "Automated loading with +/-0.1 mm tolerance for stainless, mild steel, and aluminium.",
       },
       {
-        label: "금속 프레스",
-        description: "퀵 다이 체인지와 디지털 QC가 결합된 450톤 프레스 라인.",
+        key: "fabrication",
+        title: "Precision fabrication & welding",
+        description: "Certified MIG/TIG teams with validated WPS/PQR, precision jigs, and structured inspection.",
+      },
+      {
+        key: "finishing",
+        title: "Integrated finishing ready to ship",
+        description: "Bending, coating, and assembly with digital quality reports.",
+      },
+      {
+        key: "spark",
+        title: "Realtime production monitoring",
+        description: "OEE dashboards and end-to-end traceability keep every run transparent.",
       },
     ],
     metrics: [
-      { label: "리드타임", value: "3-5일" },
-      { label: "수율", value: "98%" },
-      { label: "추적성", value: "Digital MES" },
+      { label: "Lead Time", value: "3-5 days" },
+      { label: "Yield Rate", value: "98%" },
+      { label: "Traceability", value: "Digital MES" },
     ],
   },
 }
 
-const statsContent = {
-  id: [
-    { value: "25+", label: "Lini fabrikasi & workshop" },
-    { value: "45+", label: "Mitra manufaktur aktif" },
-    { value: "99%", label: "Uptime utilitas kawasan" },
-  ],
-  en: [
-    { value: "25+", label: "Fabrication lines & workshops" },
-    { value: "45+", label: "Active manufacturing partners" },
-    { value: "99%", label: "Industrial utility uptime" },
-  ],
-  ko: [
-    { value: "25+", label: "제작 라인 및 워크숍" },
-    { value: "45+", label: "활성 제조 파트너" },
-    { value: "99%", label: "산업 단지 가동률" },
-  ],
-}
-
-export function Hero() {
+function Hero() {
   const { language } = useLanguage()
-
   const content = heroContent[language] ?? heroContent.id
-  const stats = statsContent[language] ?? statsContent.id
+  const headline = content.headline ?? heroContent.id.headline
+  const highlights = content.highlights ?? []
+  const metrics = content.metrics ?? []
+  const trusted = content.trusted ?? []
+
+  const primaryCta = {
+    label: content.primaryCta ?? heroContent.id.primaryCta,
+    href: content.primaryHref ?? heroContent.id.primaryHref,
+    type: content.primaryType ?? heroContent.id.primaryType ?? "route",
+  }
+  const secondaryCta = {
+    label: content.secondaryCta ?? heroContent.id.secondaryCta,
+    href: content.secondaryHref ?? heroContent.id.secondaryHref,
+    type: content.secondaryType ?? heroContent.id.secondaryType ?? "route",
+  }
+
+  const renderCta = (cta, variant = "primary") => {
+    if (!cta?.label || !cta?.href) return null
+
+    const baseStyles =
+      "inline-flex items-center justify-center gap-2 rounded-full px-8 py-3 text-sm font-semibold transition focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+    const primaryStyles = `${baseStyles} bg-theme-blue text-white shadow-[0_20px_40px_-24px_rgba(37,99,235,0.55)] hover:bg-[#1d4ed8] focus-visible:ring-theme-purple/60`
+    const secondaryStyles = `${baseStyles} border border-theme-purple/20 text-theme-blue hover:border-theme-purple hover:text-theme-purple focus-visible:ring-theme-purple/40`
+    const className = variant === "primary" ? primaryStyles : secondaryStyles
+    const icon = <ArrowUpRight size={18} />
+
+    if (cta.type === "external") {
+      return (
+        <a href={cta.href} target="_blank" rel="noreferrer" className={className}>
+          {cta.label}
+          {icon}
+        </a>
+      )
+    }
+
+    if (cta.type === "anchor") {
+      return (
+        <a href={cta.href} className={className}>
+          {cta.label}
+          {icon}
+        </a>
+      )
+    }
+
+    return (
+      <Link to={cta.href} className={className}>
+        {cta.label}
+        {icon}
+      </Link>
+    )
+  }
 
   return (
-    <section className="relative overflow-hidden">
-      <div className="absolute inset-y-10 right-[-18%] hidden h-[520px] w-[520px] rounded-full bg-light-theme-purple/60 blur-[160px] lg:block" />
-      <div className="container relative grid gap-16 py-24 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
-        <div className="space-y-12">
-          <span className="inline-flex items-center gap-2 rounded-full bg-light-theme-purple px-5 py-2 text-xs font-semibold uppercase tracking-[0.4em] text-theme-purple">
-            <Sparkles size={14} /> {content.badge}
-          </span>
-          <div className="space-y-6">
-            <h1 className="text-4xl font-semibold leading-tight text-theme-blue sm:text-5xl lg:text-6xl">{content.title}</h1>
-            <p className="max-w-xl text-lg leading-relaxed text-muted-grey">{content.description}</p>
+    <section className="relative isolate overflow-hidden bg-white text-theme-blue">
+      <div
+        className="absolute inset-0 bg-[length:180%_180%] bg-gradient-to-br from-[#dbe4ff] via-white to-[#e0e7ff] opacity-80 animate-gradient-pan"
+        aria-hidden
+      />
+      <div className="absolute -right-24 bottom-[-18rem] h-[36rem] w-[36rem] rounded-full bg-gradient-to-br from-theme-purple/15 via-light-theme-purple/50 to-transparent blur-3xl animate-float-blob" aria-hidden />
+      <div className="absolute -left-32 top-[-12rem] h-[28rem] w-[28rem] rounded-full bg-gradient-to-br from-light-theme-purple/70 via-white/40 to-transparent blur-[120px] animate-float-blob [animation-delay:1.5s]" aria-hidden />
+
+      <div className="container relative z-10 flex flex-col gap-16 py-24 md:py-32">
+        <div className="flex flex-col gap-12">
+          <div className="flex flex-col gap-6">
+            <span className="inline-flex items-center gap-2 text-[0.68rem] font-semibold uppercase tracking-[0.45em] text-theme-purple/70">
+              <Sparkles size={16} className="text-theme-purple" />
+              {content.badge}
+            </span>
           </div>
-          <div className="flex flex-col gap-4 sm:flex-row">
-            <Link
-              to="/contact"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-theme-purple px-8 py-3 text-sm font-semibold text-white shadow-soft transition hover:bg-dark-theme-purple"
-            >
-              {content.primaryCta} <ArrowUpRight size={18} />
-            </Link>
-            <Link
-              to="/work"
-              className="inline-flex items-center justify-center gap-2 rounded-full border border-theme-purple/30 px-8 py-3 text-sm font-semibold text-theme-purple transition hover:bg-light-theme-purple"
-            >
-              <Play size={18} /> {content.secondaryCta}
-            </Link>
-          </div>
-          <div className="grid gap-6 rounded-3xl border border-slate-200 bg-white p-8 shadow-card">
-            <div className="flex items-center gap-3 text-sm text-muted-grey">
-              <span className="flex h-10 w-10 items-center justify-center rounded-full bg-light-theme-purple text-theme-purple">
-                <ShieldCheck size={20} />
+
+          <div className="max-w-3xl space-y-8">
+            <h1 className="text-4xl font-semibold leading-[1.05] text-theme-blue sm:text-5xl xl:text-6xl">
+              <span className="block">{headline.leading}</span>
+              <span className="relative block">
+                <span className="relative z-10">{headline.highlight}</span>
+                <span
+                  className="absolute inset-x-1 bottom-0 h-3 rounded-full bg-gradient-to-r from-theme-purple via-theme-purple/40 to-transparent"
+                  aria-hidden
+                />
               </span>
-              {content.quality}
+              <span className="block">{headline.trailing}</span>
+            </h1>
+            <p className="max-w-xl text-base leading-relaxed text-muted-grey sm:text-lg">{content.description}</p>
+
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
+              {renderCta(primaryCta, "primary")}
+              {renderCta(secondaryCta, "secondary")}
             </div>
-            <dl className="grid gap-6 sm:grid-cols-3">
-              {stats.map((stat) => (
-                <div key={stat.label}>
-                  <dt className="text-xs uppercase tracking-[0.4em] text-muted-grey">{stat.label}</dt>
-                  <dd className="mt-2 text-2xl font-semibold text-theme-blue">{stat.value}</dd>
-                </div>
-              ))}
-            </dl>
           </div>
         </div>
 
-        <div className="relative w-full max-w-xl justify-self-center lg:justify-self-end">
-          <div className="absolute inset-0 rounded-[40px] bg-gradient-to-br from-light-theme-purple/60 via-white to-transparent blur-2xl" />
-          <div className="relative rounded-[32px] border border-slate-200 bg-white p-10 shadow-card">
-            <div className="space-y-6">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-xs uppercase tracking-[0.4em] text-muted-grey">{content.campusLabel}</p>
-                  <p className="mt-2 text-lg font-semibold text-theme-blue">{content.campusTitle}</p>
+        <div className="grid gap-10 lg:grid-cols-[minmax(0,0.7fr)_minmax(0,0.3fr)] lg:items-end">
+          <div className="grid gap-6 sm:grid-cols-2">
+            {highlights.slice(0, 4).map((item, index) => {
+              const Icon = highlightIcons[item.key] ?? Sparkles
+              return (
+                <div
+                  key={item.title}
+                  className="group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-6 shadow-[0_45px_90px_-60px_rgba(15,23,42,0.18)] transition-transform duration-300 animate-fade-up hover:-translate-y-1 hover:shadow-[0_35px_70px_-50px_rgba(37,99,235,0.35)]"
+                  style={{ animationDelay: `${index * 0.08}s` }}
+                >
+                  <div className="absolute -right-12 top-12 h-24 w-24 rounded-full bg-light-theme-purple blur-3xl opacity-0 transition-opacity duration-300 group-hover:opacity-100" aria-hidden />
+                  <div className="flex items-center gap-3">
+                    <span className="flex h-10 w-10 items-center justify-center rounded-full bg-light-theme-purple text-theme-purple">
+                      <Icon size={18} />
+                    </span>
+                    <p className="text-sm font-semibold text-theme-blue">{item.title}</p>
+                  </div>
+                  <p className="mt-4 text-sm leading-relaxed text-muted-grey">{item.description}</p>
                 </div>
-                <span className="rounded-full bg-light-theme-purple px-4 py-1 text-xs font-medium text-theme-purple">
-                  {content.campusBadge}
+              )
+            })}
+          </div>
+
+          <div className="space-y-6 rounded-[32px] border border-slate-200 bg-white/80 p-6 shadow-[0_45px_90px_-60px_rgba(15,23,42,0.18)] backdrop-blur">
+            <p className="text-xs font-semibold uppercase tracking-[0.45em] text-muted-grey/70">{content.trustedHeading}</p>
+            <div className="flex flex-wrap gap-3">
+              {trusted.map((industry) => (
+                <span key={industry} className="rounded-full border border-theme-purple/20 bg-light-theme-purple/50 px-4 py-1 text-xs font-semibold uppercase tracking-[0.35em] text-theme-purple">
+                  {industry}
                 </span>
-              </div>
-              <div className="space-y-4 text-sm text-muted-grey">
-                {content.modules.map((module) => (
-                  <div key={module.label} className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
-                    <p className="text-xs uppercase tracking-[0.35em] text-muted-grey">{module.label}</p>
-                    <p className="mt-2 text-theme-blue">{module.description}</p>
-                  </div>
-                ))}
-              </div>
-              <div className="grid gap-3 rounded-2xl border border-slate-200 bg-white p-4 text-xs uppercase tracking-[0.35em] text-muted-grey">
-                {content.metrics.map((metric) => (
-                  <div key={metric.label} className="flex items-center justify-between">
-                    <span>{metric.label}</span>
-                    <span className="text-theme-purple">{metric.value}</span>
-                  </div>
-                ))}
-              </div>
+              ))}
+            </div>
+            <div className="grid gap-4">
+              {metrics.map((metric) => (
+                <div key={metric.label} className="flex items-baseline justify-between border-b border-slate-200 pb-3 last:border-b-0 last:pb-0">
+                  <span className="text-xs uppercase tracking-[0.35em] text-muted-grey/70">{metric.label}</span>
+                  <span className="text-xl font-semibold text-theme-blue">{metric.value}</span>
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -190,3 +288,6 @@ export function Hero() {
     </section>
   )
 }
+
+export { Hero }
+export default Hero

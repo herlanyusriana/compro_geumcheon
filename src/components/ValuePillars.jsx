@@ -80,22 +80,29 @@ export function ValuePillars() {
   const copy = sectionCopy[language] ?? sectionCopy.id
 
   return (
-    <section className="bg-white py-20">
-      <div className="container space-y-12">
+    <section className="relative isolate overflow-hidden bg-white py-24 text-theme-blue md:py-28 animate-fade-in">
+      <div className="absolute inset-0 bg-gradient-to-b from-light-theme-purple/45 via-white to-white" aria-hidden />
+      <div className="absolute -left-20 top-16 h-64 w-64 rounded-full bg-theme-purple/15 blur-3xl" aria-hidden />
+      <div className="absolute -right-14 bottom-[-8rem] h-[26rem] w-[26rem] rounded-full bg-light-theme-purple/60 blur-[120px]" aria-hidden />
+
+      <div className="container relative z-10 space-y-12 md:space-y-16">
         <div className="mx-auto max-w-2xl space-y-4 text-center">
-          <span className="text-xs font-semibold uppercase tracking-[0.4em] text-muted-grey">{copy.badge}</span>
+          <span className="inline-flex items-center justify-center gap-2 rounded-full border border-theme-purple/20 bg-light-theme-purple/60 px-5 py-2 text-xs font-semibold uppercase tracking-[0.4em] text-theme-purple">
+            {copy.badge}
+          </span>
           <h2 className="text-3xl font-semibold text-theme-blue sm:text-4xl">{copy.title}</h2>
         </div>
 
         <div className="grid gap-8 lg:grid-cols-3">
-          {copy.pillars.map((pillar) => (
+          {copy.pillars.map((pillar, index) => (
             <div
               key={pillar.title}
-              className="relative overflow-hidden rounded-[32px] border border-slate-200 bg-white p-8 shadow-card transition hover:-translate-y-1 hover:shadow-2xl"
+              className="relative overflow-hidden rounded-[32px] border border-slate-200 bg-white p-8 shadow-[0_40px_120px_-80px_rgba(15,23,42,0.18)] transition hover:-translate-y-1 hover:shadow-[0_30px_90px_-50px_rgba(37,99,235,0.35)] animate-fade-up"
+              style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <div className="absolute -bottom-12 right-6 h-28 w-28 rounded-full bg-light-theme-purple/50 blur-xl" />
+              <div className="absolute -bottom-12 right-6 h-28 w-28 rounded-full bg-light-theme-purple blur-xl" />
               <div className="relative space-y-4">
-                <p className="inline-flex rounded-full bg-light-theme-purple px-4 py-1 text-xs font-semibold uppercase tracking-[0.35em] text-theme-purple">
+                <p className="inline-flex rounded-full border border-theme-purple/20 bg-light-theme-purple/60 px-4 py-1 text-xs font-semibold uppercase tracking-[0.35em] text-theme-purple">
                   {pillar.metric}
                 </p>
                 <h3 className="text-xl font-semibold text-theme-blue">{pillar.title}</h3>
