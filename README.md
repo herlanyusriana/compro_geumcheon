@@ -1,77 +1,75 @@
-﻿# Geum Cheon Indo Company Profile
+# Geum Cheon Indo Company Profile
 
-A modern single-page experience for showcasing Geum Cheon Indo's industrial capabilities. Built with React 19, Vite, and Tailwind CSS, the site highlights precision metal manufacturing services, flagship projects, and partner network in three languages (Bahasa Indonesia, English, and Korean).
+Geum Cheon Indo's marketing site highlights fabrication capabilities, flagship projects, certifications, and contact channels in Bahasa Indonesia, English, and Korean. The experience is powered by Vite + React 19 and styled with Tailwind CSS for fast iteration and polished visuals.
 
-## Highlights
+## Key Features
 
-- 🌐 **Multilingual content** driven by a shared language context (id, en, ko).
-- 🧭 **Smooth navigation** with React Router (/, /work, /work/:slug, /partners, /contact).
-- 🧩 **Reusable sections** for hero, services, industries, projects, insights, certifications, and more.
-- 🪄 **Motion & polish** using Framer Motion, Swiper carousels, Lucide icons, and glassmorphism accents.
-- 🤝 **Lead capture & outreach** via contact form section plus floating WhatsApp shortcut.
-- 📱 **Fully responsive** layouts powered by Tailwind utility classes.
+- **Multilingual UX** backed by a language context with browser persistence (ID, EN, KR).
+- **Modern landing flow** covering hero messaging, value pillars, primary services, and company story.
+- **Project storytelling** through `/work` listings, `/work/:slug` detail pages, and a rich photo showcase grid.
+- **Trust signals** including certifications carousel, client logo wall, and partner case studies.
+- **Lead capture** via WhatsApp quick actions, contact section, and a dedicated project quote CTA.
+- **Responsive design** built with Tailwind utilities, motion hooks, and glassmorphism accents.
 
 ## Tech Stack
 
 | Layer | Tools |
 | --- | --- |
 | Framework | React 19 + Vite |
-| Styling | Tailwind CSS 3, custom gradients, CSS Modules |
-| State | React Context (language switcher) |
-| Animations | Framer Motion, Swiper |
-| Icons | lucide-react |
+| Styling | Tailwind CSS 3 with custom theme tokens |
+| State | React Context (LanguageProvider) |
+| Animations & UI | Framer Motion, Swiper, Lucide icons |
+| Tooling | ESLint, PostCSS, Vite build pipeline |
 
 ## Project Structure
 
-`
-compro/
-├── public/              # Static assets served as-is
-├── src/
-│   ├── assets/          # Images, logos, illustration files
-│   ├── components/      # Section-level components (Hero, Services, etc.)
-│   ├── context/         # LanguageContext with provider & hook
-│   ├── pages/           # Route views (Home, Work, Partners, Contact)
-│   ├── App.jsx          # Router + layout shell
-│   ├── main.jsx         # App entrypoint
-│   └── index.css        # Tailwind layer & base styles
-├── tailwind.config.js   # Tailwind theme tokens & extensions
-├── vite.config.js       # Vite build configuration
-└── package.json         # Scripts & dependencies
-`
+```
+compro_geumcheon/
+├─ public/                    # Static assets served as-is
+├─ src/
+│  ├─ assets/                 # Optimised images, logos, galleries
+│  ├─ components/             # Section components (Hero, PrimaryServicesSection, PhotoShowcase, etc.)
+│  ├─ context/                # LanguageProvider and useLanguage hook
+│  ├─ pages/                  # Routed views (Home, Work, ProjectQuote, service details)
+│  ├─ utils/                  # Shared helpers (e.g. WhatsApp link builder)
+│  ├─ App.jsx                 # Router configuration and page layout shell
+│  └─ main.jsx                # Application entry point
+├─ tailwind.config.js         # Theme extensions and design tokens
+├─ vite.config.js             # Vite configuration
+└─ package.json               # Scripts and dependencies
+```
 
 ## Getting Started
 
-`ash
+```bash
 # install dependencies
 npm install
 
-# start dev server (http://localhost:5173 by default)
+# run the dev server (http://localhost:5173)
 npm run dev
 
-# run ESLint
+# lint the codebase
 npm run lint
 
-# create production build (outputs to /dist)
+# build for production (outputs to dist/)
 npm run build
 
-# preview production build
+# preview the built assets locally
 npm run preview
-`
+```
 
 ## Customising Content
 
-- Change hero/tagline language data in src/components/Hero.jsx.
-- Update service/project/partner entries inside their respective section components under src/components/ and src/pages/.
-- Adjust navigation routes or copy in src/components/Navbar.jsx.
-- Edit contact CTA and phone numbers/links in WhatsAppButton.jsx and ContactSection.jsx.
+- Update hero messaging, values, and service copy inside `src/components/*.jsx` (Hero, ValuePillars, PrimaryServicesSection, etc.).
+- Curate project galleries and captions in `src/components/PhotoShowcase.jsx` and the `src/assets/web/Project/` directory.
+- Manage certifications and client logos within their respective section components.
+- Configure WhatsApp links via `src/utils/whatsapp.js` and `src/components/WhatsAppButton.jsx`.
+- Adjust available languages or navigation labels in `src/context/LanguageContext.jsx` and `src/components/Navbar.jsx`.
 
 ## Deployment
 
-The Vite build generates a static site in the dist/ folder. Deploy to any static host:
-
-- Copy dist/ to Netlify, Vercel, GitHub Pages, Cloudflare Pages, or your own Nginx/Apache.
-- Ensure server rewrites all routes (/work/:slug, etc.) to index.html (single-page app behaviour).
+Running `npm run build` creates a static bundle in `dist/`. Deploy the folder to any static host (Netlify, Vercel, GitHub Pages, Cloudflare Pages, or self-hosted Nginx/Apache). For client-side routing support, configure rewrites so every route (including `/work/:slug`) resolves to `index.html`.
 
 ## License
 
-The repository ships with the MIT license (see LICENSE). Review branding requirements before reuse.
+Distributed under the MIT License. Refer to `LICENSE` for full terms and respect Geum Cheon Indo branding assets when reusing the codebase.
